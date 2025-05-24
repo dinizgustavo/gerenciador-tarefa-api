@@ -31,9 +31,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTodoMundo", policy =>
     {
-        policy.AllowAnyOrigin()    // libera qualquer origem
-              .AllowAnyHeader()    // libera qualquer header
-              .AllowAnyMethod();   // libera qualquer método HTTP (GET, POST, etc)
+        policy.AllowAnyOrigin()    
+              .AllowAnyHeader()    
+              .AllowAnyMethod();   
     });
 });
 
@@ -43,6 +43,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.EnsureCreated(); 
 }
 
 app.UseHttpsRedirection();

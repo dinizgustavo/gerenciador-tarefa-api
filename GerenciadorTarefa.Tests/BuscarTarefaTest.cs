@@ -10,15 +10,13 @@ namespace GerenciadorTarefa.Tests
         [Fact]
         public async Task Deve_Buscar_Tarefa_Por_Id()
         {
-            // Arrange
+
             var mockService = new Mock<ITarefaService>();
             mockService.Setup(s => s.GetTarefaByIdAsync(1))
                 .ReturnsAsync(new Tarefa { Id = 1, Titulo = "Teste" });
 
-            // Act
             var tarefa = await mockService.Object.GetTarefaByIdAsync(1);
 
-            // Assert
             Assert.NotNull(tarefa);
             Assert.Equal(1, tarefa.Id);
             Assert.Equal("Teste", tarefa.Titulo);

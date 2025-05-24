@@ -15,7 +15,6 @@ namespace GerenciadorTarefa.Tests
                 Descricao = "Descrição de teste"
             };
 
-            // Assert
             Assert.Equal("Teste", tarefa.Titulo);
             Assert.Equal("Descrição de teste", tarefa.Descricao);
             Assert.Equal(TarefaStatus.Pendente, tarefa.Status);
