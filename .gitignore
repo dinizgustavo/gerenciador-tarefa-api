@@ -1,0 +1,52 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# ASP.NET
+appsettings.Development.json
+appsettings.Local.json
+
+# Logs
+*.log
+
+# EF Core Migrations snapshot (se for usar o padrão .Snapshot.cs)
+**/*.Snapshot.cs
+
+# Test results
+TestResults/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Database local files
+*.mdf
+*.ldf
+*.db
+*.sqlite
+
+# Node (se estiver usando frontend com Node ou Vue no mesmo repo)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
