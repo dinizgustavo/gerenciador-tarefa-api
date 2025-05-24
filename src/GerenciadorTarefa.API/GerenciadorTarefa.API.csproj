@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GerenciadorTarefa.Application\GerenciadorTarefa.Application.csproj" />
     <ProjectReference Include="..\GerenciadorTarefa.Domain\GerenciadorTarefa.Domain.csproj" />
-    <ProjectReference Include="..\GerenciadorTarefa.Infrastructure\GerenciadorTarefa.Infrastructure.csproj" />
+    <ProjectReference Include="..\GerenciadorTarefa.Infrastructure\GerenciadorTarefa.Infrastructure.csproj" /> 
   </ItemGroup>
 
 </Project>

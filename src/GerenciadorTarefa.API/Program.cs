@@ -27,6 +27,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
 builder.Services.AddScoped<ITarefaService, TarefaService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirTodoMundo", policy =>
+    {
+        policy.AllowAnyOrigin()    // libera qualquer origem
+              .AllowAnyHeader()    // libera qualquer header
+              .AllowAnyMethod();   // libera qualquer método HTTP (GET, POST, etc)
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -37,7 +47,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseMiddleware<ErrorHandlingMiddleware>();
+app.UseCors("PermitirTodoMundo");
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

@@ -34,6 +34,9 @@ namespace GerenciadorTarefa.Application.Services
         }
         public Task UpdateTarefaAsync(int id, Tarefa tarefa)
         {
+            if (tarefa.DataConclusao.HasValue && tarefa.DataConclusao < tarefa.DataCriacao)
+                throw new ArgumentException("Data de conclusão não pode ser anterior à data de criação.");
+
             return _repository.UpdateTarefaAsync(id, tarefa);
         }
     }

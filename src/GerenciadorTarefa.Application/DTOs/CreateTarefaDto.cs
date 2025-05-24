@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GerenciadorTarefa.Application.DTOs
 {
-    public class UpdateTarefaDto
+    public class CreateTarefaDto
     {
         [Required(ErrorMessage = "O título é obrigatório.")]
         [MaxLength(100, ErrorMessage = "O título deve ter no máximo 100 caracteres.")]
@@ -16,8 +16,5 @@ namespace GerenciadorTarefa.Application.DTOs
 
         public string? Descricao { get; set; }
 
-        public DateTime? DataConclusao { get; set; }
-
-        public TarefaStatus Status { get; set; }
     }
 }

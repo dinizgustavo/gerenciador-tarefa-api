@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="DTOs\DeleteTarefaDto.cs" />
+    <Compile Remove="DTOs\UpdateTarefaDto - Cópia.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GerenciadorTarefa.Domain\GerenciadorTarefa.Domain.csproj" />
   </ItemGroup>
 
