@@ -1,79 +1,112 @@
 # Gerenciador de Tarefas - Backend (.NET 9)
 
-Este é o backend do teste para vaga de desenvolvedor, feito em .NET 9, que permite criar, editar, listar e excluir tarefas, com persistência em SQL Server.
+Este é o backend de um sistema de gerenciamento de tarefas, desenvolvido em .NET 9 como parte de um teste técnico. A API permite criar, listar, editar e excluir tarefas, utilizando persistência em banco de dados SQL Server.
+
+---
 
 ## Pré-requisitos
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
-- [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) (pode ser LocalDB, Express ou outro)
+- [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) (LocalDB, Express ou outro)
 - Visual Studio 2022+ ou VS Code
 
-## Como rodar o projeto
+---
 
-1. **Clone o repositório:**
+## Como rodar o projeto localmente
 
-   ```bash
-   git clone https://github.com/dinizgustavo/gerenciador-tarefa-api.git
-   cd GerenciadorTarefa-api
-   ```
+### 1. Clone o repositório
 
-2. **Restaure as dependências:**
+```bash
+git clone https://github.com/dinizgustavo/gerenciador-tarefa-api.git
+cd GerenciadorTarefa-api
+```
 
-   ```bash
-   dotnet restore
-   ```
+### 2. Restaure as dependências
 
-3. **Configure a string de conexão:**
+```bash
+dotnet restore
+```
 
-   - No arquivo `src/GerenciadorTarefa.API/appsettings.json`, ajuste a string de conexão conforme seu ambiente SQL Server:
+### 3. Configure a string de conexão
 
-     ```json
-     "ConnectionStrings": {
-       "DefaultConnection": "Server=localhost;Database=TarefaDb;Trusted_Connection=True;TrustServerCertificate=True;"
-     }
-     ```
+Abra o arquivo `src/GerenciadorTarefa.API/appsettings.json` e edite a seção abaixo conforme seu ambiente:
 
-   - Se necessário, altere usuário, senha ou nome do servidor.
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=TarefaDb;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+```
 
-4. **Inicie a API:**
+Se necessário, adicione `User ID` e `Password`.
 
-   ```bash
-   dotnet run --project src/GerenciadorTarefa.API
-   ```
+### 4. Inicie a API
 
-   - O banco de dados será criado automaticamente ao rodar a API pela primeira vez.
+```bash
+dotnet run --project src/GerenciadorTarefa.API
+```
 
-5. **Acesse a documentação Swagger:**
+- O banco de dados será criado automaticamente na primeira execução, via EF Core.
 
-   ```
-   http://localhost:5173/swagger
-   ```
+### 5. Acesse a documentação Swagger
 
-   - Use o Swagger para testar os endpoints diretamente pelo navegador.
+Acesse pelo navegador:
 
-## Observações
+```
+http://localhost:5173/swagger
+```
 
-- Não é necessário rodar comandos de migração manualmente: o banco será criado automaticamente.
-- O backend espera que o SQL Server esteja disponível e acessível conforme a string de conexão.
-- Lembre-se de rodar o back-end e o front-end RESPECTIVAMENTE. A mudança de ordem pode inviabilizar o uso das portas corretas.
+---
+
+## Rodando os testes
+
+Execute os testes com:
+
+```bash
+dotnet test
+```
+
+---
 
 ## Scripts úteis
 
-- `dotnet run --project src/GerenciadorTarefa.API` — inicia a API em modo desenvolvimento
-- `dotnet test` — executa os testes unitários
+| Comando                                      | Descrição                                  |
+|---------------------------------------------|--------------------------------------------|
+| `dotnet run --project src/GerenciadorTarefa.API` | Inicia a API em modo desenvolvimento       |
+| `dotnet test`                                | Executa os testes unitários                |
+| `dotnet ef migrations add NomeDaMigracao`    | Cria uma nova migração (EF Core)           |
+| `dotnet ef database update`                  | Aplica a migração no banco de dados        |
+
+> Para usar os comandos do `ef`, instale o pacote `Microsoft.EntityFrameworkCore.Tools`.
+
+---
 
 ## Estrutura do Projeto
 
-- `src/GerenciadorTarefa.API` — API REST (controllers, middlewares)
-- `src/GerenciadorTarefa.Application` — Lógica de aplicação (serviços, DTOs)
-- `src/GerenciadorTarefa.Domain` — Entidades e interfaces de domínio
-- `src/GerenciadorTarefa.Infrastructure` — Persistência de dados (EF Core, repositórios)
-- `GerenciadorTarefa.Tests` — Testes unitários
+```
+GerenciadorTarefa-api/
+├── src/
+│   ├── GerenciadorTarefa.API             → Controllers, middlewares e configuração
+│   ├── GerenciadorTarefa.Application     → Lógica de aplicação (serviços, DTOs)
+│   ├── GerenciadorTarefa.Domain          → Entidades e contratos de domínio
+│   └── GerenciadorTarefa.Infrastructure  → Persistência de dados (EF Core)
+├── GerenciadorTarefa.Tests/              → Testes unitários
+└── README.md
+```
+
+---
+
+## Observações
+
+- O banco é criado automaticamente ao iniciar a API (via migrations automáticas).
+- A ordem recomendada de execução é: **backend primeiro, frontend depois** — isso garante o uso correto das portas.
+- O Swagger oferece uma interface gráfica para testes rápidos dos endpoints.
+
+---
 
 ## Contato
 
-Dúvidas ou problemas? Entre em contato:  
-[Gustavo Diniz] — [dinizgustavo92@gmail.com]
+Dúvidas ou sugestões?  
+Entre em contato por e-mail: dinizgustavo92@gmail.com
 
 ---
 
