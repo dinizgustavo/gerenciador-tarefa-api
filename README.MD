@@ -55,7 +55,7 @@ Este é o backend do teste para vaga de desenvolvedor, feito em .NET 9, que perm
 
 - Não é necessário rodar comandos de migração manualmente: o banco será criado automaticamente.
 - O backend espera que o SQL Server esteja disponível e acessível conforme a string de conexão.
-- O projeto já está pronto para uso local, mas pode ser facilmente adaptado para produção.
+- Lembre-se de rodar o back-end e o front-end RESPECTIVAMENTE. A mudança de ordem pode inviabilizar o uso das portas corretas.
 
 ## Scripts úteis
 
